@@ -4,6 +4,7 @@ import com.example.h2.entity.UserInfo;
 import com.example.h2.entity.UserInfoRequest;
 import com.example.h2.services.UserServiceImpl;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Pattern;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
@@ -31,8 +32,8 @@ public class Controller {
 
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
-  public void createUser(@Valid @RequestBody UserInfo userInfo) {
-    useServiceImpl.createUser(userInfo);
+  public void createUser(@Valid @RequestBody UserInfoRequest userInfo) {
+    useServiceImpl.saveUser(userInfo);
   }
 
   @DeleteMapping("/{id}")
